@@ -39,7 +39,7 @@ function cu_emergency_banner_admin() {
  * @return {array} callback info
  */
 function cu_emergency_banner_menu() {
-  $items = arrray();
+  $items = array();
   $items['admin/settings/cu_emergency_banner'] = array(
     'title' => 'Cornell Emergency Banner module settings',
     'description' => 'Provides a test of the banner.',
