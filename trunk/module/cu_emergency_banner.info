@@ -1,0 +1,5 @@
+; $Id$
+name = Cornell Emergency Banner
+description = Banner for presenting Cornell University emergency messages on all pages
+package = Cornell University
+core = 7.x
