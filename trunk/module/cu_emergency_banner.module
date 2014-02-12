@@ -50,3 +50,13 @@ function cu_emergency_banner_menu() {
    );
   return $items;
 }
+
+/**
+ * Implements hook_permission
+ * @return array permission structure
+ */
+function cu_emergency_banner_permission() {
+  return array(
+    'administer cu_emergency_banner settings' => array('title' => t('Administer CU Emergency Banner')),
+    );
+}
