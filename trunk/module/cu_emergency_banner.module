@@ -46,7 +46,7 @@ function cu_emergency_banner_menu() {
     'page callback' => 'drupal_get_form',
     'page arguments' => array('cu_emergency_banner_admin'),
     'access arguments' => array('administer cu_emergency_banner settings'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_CALLBACK,
    );
   return $items;
 }
