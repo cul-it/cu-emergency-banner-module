@@ -1,0 +1,29 @@
+/**
+ * Implements hook_init().
+ */
+function cu_emergency_banner_init() {
+  drupal_add_js('https://embanner.univcomm.cornell.edu/OWC-emergency-banner.js', array('type' => 'external'));
+}
+
+/**
+ * form for administering emergency banner
+ * @return form
+ */
+function cu_emergency_banner_admin() {
+  $form = array();
+  $form['cu_emergency_banner_check'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Display the Test Emergency Message'),
+    '#default_value' => variable_get('cu_emergency_banner_check', FALSE),
+  );
+  $form['cu_emergency_banner_text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Test Emergency Message'),
+    '#default_value' => variable_get('cu_emergency_banner_text', t('The sky is falling!')),
+    '#size' => 30,
+    '#maxlength' => 80,
+    '#description' => t("Test message display to on your site."),
+    '#required' => TRUE,
+  );
+  return system_settings_form($form);
+}
