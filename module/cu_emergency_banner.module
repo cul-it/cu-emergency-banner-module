@@ -3,6 +3,11 @@
  */
 function cu_emergency_banner_init() {
   drupal_add_js('https://embanner.univcomm.cornell.edu/OWC-emergency-banner.js', array('type' => 'external'));
+  $test_banner = variable_get('cu_emergency_banner_check', FALSE);
+  if ($test_banner) {
+    $message = variable_get('cu_emergency_banner_text', t('The sky is falling!'));
+    drupal_add_js("CUEmBanner.OWC_message = \"$message\"", array('type' => 'inline'));
+  }
 }
 
 /**
@@ -26,4 +31,21 @@ function cu_emergency_banner_admin() {
     '#required' => TRUE,
   );
   return system_settings_form($form);
+}
+
+/**
+ * Implements hook_menu()
+ * @return {array} callback info
+ */
+function cu_emergency_banner_menu() {
+  $items = arrray();
+  $items['admin/settings/cu_emergency_banner'] = array(
+    'title' => 'Cornell Emergency Banner module settings',
+    'description' => 'Provides a test of the banner.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('cu_emergency_banner_admin'),
+    'access arguments' => array('administer cu_emergency_banner settings'),
+    'type' => MENU_NORMAL_ITEM,
+   );
+  return $items;
 }
