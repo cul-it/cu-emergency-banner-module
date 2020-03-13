@@ -3,6 +3,11 @@
  * Implements hook_init().
  */
 function cu_emergency_banner_init() {
+  /**
+   * Note: this is obsolete. I couldn't get it to output the required async attribute
+   * https://brand.cornell.edu/messaging/emergency-banner/
+   * <script src="//embanner.univcomm.cornell.edu/OWC-emergency-banner.js" type="text/javascript" async></script>
+   */
   drupal_add_js('https://embanner.univcomm.cornell.edu/OWC-emergency-banner.js', array('type' => 'external'));
   $test_banner = variable_get('cu_emergency_banner_check', FALSE);
   if ($test_banner) {
