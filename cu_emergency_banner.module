@@ -3,7 +3,16 @@
  * Implements hook_init().
  */
 function cu_emergency_banner_init() {
-  drupal_add_js('https://embanner.univcomm.cornell.edu/OWC-emergency-banner.js', array('type' => 'external'));
+  $element = [
+    '#tag' => 'script',
+    '#value' => '',
+    '#attributes' => [
+      'src' => 'https://embanner.univcomm.cornell.edu/OWC-emergency-banner.js',
+      'type' => 'text/javascript',
+      'async' => "async",
+    ],
+  ];
+  drupal_add_html_head($element, 'my_async_js');
   $test_banner = variable_get('cu_emergency_banner_check', FALSE);
   if ($test_banner) {
     $message = variable_get('cu_emergency_banner_text', t('The sky is falling!'));
